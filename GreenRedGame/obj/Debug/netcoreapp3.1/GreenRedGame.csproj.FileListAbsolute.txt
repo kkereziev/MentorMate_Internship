@@ -1,0 +1,13 @@
+C:\Users\Krum\source\repos\GreenRedGame\GreenRedGame\bin\Debug\netcoreapp3.1\GreenRedGame.exe
+C:\Users\Krum\source\repos\GreenRedGame\GreenRedGame\bin\Debug\netcoreapp3.1\GreenRedGame.deps.json
+C:\Users\Krum\source\repos\GreenRedGame\GreenRedGame\bin\Debug\netcoreapp3.1\GreenRedGame.runtimeconfig.json
+C:\Users\Krum\source\repos\GreenRedGame\GreenRedGame\bin\Debug\netcoreapp3.1\GreenRedGame.runtimeconfig.dev.json
+C:\Users\Krum\source\repos\GreenRedGame\GreenRedGame\bin\Debug\netcoreapp3.1\GreenRedGame.dll
+C:\Users\Krum\source\repos\GreenRedGame\GreenRedGame\bin\Debug\netcoreapp3.1\GreenRedGame.pdb
+C:\Users\Krum\source\repos\GreenRedGame\GreenRedGame\obj\Debug\netcoreapp3.1\GreenRedGame.csprojAssemblyReference.cache
+C:\Users\Krum\source\repos\GreenRedGame\GreenRedGame\obj\Debug\netcoreapp3.1\GreenRedGame.csproj.CoreCompileInputs.cache
+C:\Users\Krum\source\repos\GreenRedGame\GreenRedGame\obj\Debug\netcoreapp3.1\GreenRedGame.AssemblyInfoInputs.cache
+C:\Users\Krum\source\repos\GreenRedGame\GreenRedGame\obj\Debug\netcoreapp3.1\GreenRedGame.AssemblyInfo.cs
+C:\Users\Krum\source\repos\GreenRedGame\GreenRedGame\obj\Debug\netcoreapp3.1\GreenRedGame.dll
+C:\Users\Krum\source\repos\GreenRedGame\GreenRedGame\obj\Debug\netcoreapp3.1\GreenRedGame.pdb
+C:\Users\Krum\source\repos\GreenRedGame\GreenRedGame\obj\Debug\netcoreapp3.1\GreenRedGame.genruntimeconfig.cache

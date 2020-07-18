@@ -7,13 +7,7 @@ namespace GreenRedGame
     {
         public int[,] FillGrid()
         {
-            var gridSize = Console.ReadLine()
-               .Split(new char[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries)
-               .Select(int.Parse)
-               .ToArray();
-            int width = gridSize[0];
-            int height = gridSize[1];
-            var grid = new int[height, width];
+            var grid = SizeOfGrid();
 
             for (int col = 0; col < grid.GetLength(0); col++)
             {
@@ -27,6 +21,18 @@ namespace GreenRedGame
             return grid;
         }
 
+        private int[,] SizeOfGrid()
+        {
+            var gridSize = Console.ReadLine()
+               .Split(new char[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries)
+               .Select(int.Parse)
+               .ToArray();
+            int width = gridSize[0];
+            int height = gridSize[1];
+            var grid = new int[height, width];
+            return grid;
+        }
+
         public int IterateGrid(int[,] grid, int iterations, int rowWanted, int colWanted)
         {
             int wantedCellGreenCount = 0;
@@ -34,9 +40,9 @@ namespace GreenRedGame
             while (iterations-->=0)
             {
                 var newGrid = grid.Clone() as int[,];
-                for (int row = 0; row < grid.GetLength(0); row++)
+                for (int row = 0; row < grid.GetLength(1); row++)
                 {
-                    for (int col = 0; col < grid.GetLength(1); col++)
+                    for (int col = 0; col < grid.GetLength(0); col++)
                     {
                         if (grid[col,row]==0)
                         {
@@ -77,15 +83,16 @@ namespace GreenRedGame
 
         private static int GetCell(int[,] grid,int row,int col)
         {
-            int value = default;
+            int value = -1;
             try
             {
                 value = grid[col, row];
             }
             catch (Exception)
             {
-                value = -1;
+               return value;
             }
+
             return value;
         }
 

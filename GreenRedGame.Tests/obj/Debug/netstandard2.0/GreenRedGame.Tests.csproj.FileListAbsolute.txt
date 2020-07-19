@@ -1,0 +1,5 @@
+C:\Users\Krum\source\repos\GreenRedGame\GreenRedGame.Tests\bin\Debug\netstandard2.0\GreenRedGame.Tests.deps.json
+C:\Users\Krum\source\repos\GreenRedGame\GreenRedGame.Tests\bin\Debug\netstandard2.0\GreenRedGame.Tests.dll
+C:\Users\Krum\source\repos\GreenRedGame\GreenRedGame.Tests\obj\Debug\netstandard2.0\GreenRedGame.Tests.csprojAssemblyReference.cache
+C:\Users\Krum\source\repos\GreenRedGame\GreenRedGame.Tests\obj\Debug\netstandard2.0\GreenRedGame.Tests.AssemblyInfoInputs.cache
+C:\Users\Krum\source\repos\GreenRedGame\GreenRedGame.Tests\obj\Debug\netstandard2.0\GreenRedGame.Tests.AssemblyInfo.cs

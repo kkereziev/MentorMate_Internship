@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace GreenRedGame
@@ -57,13 +58,11 @@ namespace GreenRedGame
             cells[6] = GetCellValue(grid, row, col - 1);
             //cellUpLeft
             cells[7] = GetCellValue(grid, row - 1, col - 1);
-            for (int i = 0; i < cells.Length; i++)
-            {
-                if (cells[i] > 0)
-                {
-                    sumResult += cells[i];
-                }
-            }
+            
+            sumResult = cells
+                .Where(x => x > 0)
+                .Sum();
+            
             return sumResult;
         }
     }

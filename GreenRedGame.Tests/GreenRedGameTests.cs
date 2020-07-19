@@ -75,7 +75,7 @@ namespace GreenRedGame.Tests
                 {1,1,1},
                 {1,1,1},
             };
-            Assert.AreEqual(5, gridOperations.IterateGrid(grid, 5, 1, 0));
+            Assert.AreEqual(1, gridOperations.IterateGrid(grid, 5, 1, 0));
         }
     }
 }

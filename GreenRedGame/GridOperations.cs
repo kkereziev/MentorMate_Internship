@@ -9,13 +9,13 @@ namespace GreenRedGame
         {
             var grid = SizeOfGrid();
 
-            for (int col = 0; col < grid.GetLength(0); col++)
+            for (int row = 0; row < grid.GetLength(0); row++)
             {
                 var input = Console.ReadLine()
                     .ToCharArray();
-                for (int row = 0; row < grid.GetLength(1); row++)
+                for (int col = 0; col < grid.GetLength(1); col++)
                 {
-                    grid[col, row] = input[row]-'0';
+                    grid[row, col] = input[col] - '0';
                 }
             }
             return grid;
@@ -37,26 +37,26 @@ namespace GreenRedGame
         {
             int wantedCellGreenCount = 0;
             var sumSurroundings = 0;
-            while (iterations-->=0)
+            while (iterations-- >= 0)
             {
                 var newGrid = grid.Clone() as int[,];
-                for (int row = 0; row < grid.GetLength(1); row++)
+                for (int row = 0; row < grid.GetLength(0); row++)
                 {
-                    for (int col = 0; col < grid.GetLength(0); col++)
+                    for (int col = 0; col < grid.GetLength(1); col++)
                     {
-                        if (grid[col,row]==0)
+                        if (grid[row, col] == 0)
                         {
                             sumSurroundings = SumSurroundings(grid, row, col);
-                            RedChangeColor(newGrid,row,col,sumSurroundings);
+                            RedChangeColor(newGrid, row, col, sumSurroundings);
                         }
-                        else if (grid[col,row]==1)
+                        else if (grid[row, col] == 1)
                         {
                             sumSurroundings = SumSurroundings(grid, row, col);
                             GreenChangeColor(newGrid, row, col, sumSurroundings);
                         }
                     }
                 }
-                if (grid[rowWanted,colWanted]==1)
+                if (grid[rowWanted, colWanted] == 1)
                 {
                     wantedCellGreenCount++;
                 }
@@ -67,30 +67,31 @@ namespace GreenRedGame
 
         private void GreenChangeColor(int[,] grid, int row, int col, int sumSurroundings)
         {
-            if (sumSurroundings != 2 && sumSurroundings!=3 && sumSurroundings!=6)
+            if (sumSurroundings != 2 && sumSurroundings != 3 && sumSurroundings != 6)
             {
-                grid[col, row] = 0;
+                grid[row, col] = 0;
             }
         }
 
         private void RedChangeColor(int[,] grid, int row, int col, int sum)
         {
-            if (sum==3 || sum==6)
+            if (sum == 3 || sum == 6)
             {
-                grid[col, row] = 1;
+                grid[row, col] = 1;
             }
         }
 
         private static int GetCell(int[,] grid,int row,int col)
         {
+
             int value = -1;
             try
             {
-                value = grid[col, row];
+                value = grid[row, col];
             }
             catch (Exception)
             {
-               return value;
+                return value;
             }
 
             return value;
@@ -101,24 +102,24 @@ namespace GreenRedGame
             var cells = new int[8];
             var sumResult = 0;
             //cellUp
-            cells[0]=GetCell(grid, row - 1, col);
+            cells[0] = GetCell(grid, row - 1, col);
             //cellUpRight
-            cells[1] = GetCell(grid, row - 1, col+1);
+            cells[1] = GetCell(grid, row - 1, col + 1);
             //cellRight
-            cells[2] = GetCell(grid, row , col+1);
+            cells[2] = GetCell(grid, row, col + 1);
             //cellDownRight
-            cells[3] = GetCell(grid, row +1, col+1);
+            cells[3] = GetCell(grid, row + 1, col + 1);
             //cellDown 
-            cells[4] = GetCell(grid, row +1, col);
+            cells[4] = GetCell(grid, row + 1, col);
             //cellDownLeft 
-            cells[5] = GetCell(grid, row +1, col-1);
+            cells[5] = GetCell(grid, row + 1, col - 1);
             //cellLeft 
-            cells[6] = GetCell(grid, row , col-1);
+            cells[6] = GetCell(grid, row, col - 1);
             //cellUpLeft
-            cells[7] = GetCell(grid, row-1 , col-1);
+            cells[7] = GetCell(grid, row - 1, col - 1);
             for (int i = 0; i < cells.Length; i++)
             {
-                if (cells[i]>0)
+                if (cells[i] > 0)
                 {
                     sumResult += cells[i];
                 }

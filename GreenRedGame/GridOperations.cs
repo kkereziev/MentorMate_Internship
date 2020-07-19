@@ -5,6 +5,7 @@ namespace GreenRedGame
 {
     public class GridOperations : IGridOperations
     {
+        CellOperations cellOperations = new CellOperations();
         public int[,] FillGrid()
         {
             var grid = SizeOfGrid();
@@ -46,13 +47,13 @@ namespace GreenRedGame
                     {
                         if (grid[row, col] == 0)
                         {
-                            sumSurroundings = SumSurroundings(grid, row, col);
-                            RedChangeColor(newGrid, row, col, sumSurroundings);
+                            sumSurroundings = cellOperations.SumSurroundings(grid, row, col);
+                            cellOperations.RedChangeColor(newGrid, row, col, sumSurroundings);
                         }
                         else if (grid[row, col] == 1)
                         {
-                            sumSurroundings = SumSurroundings(grid, row, col);
-                            GreenChangeColor(newGrid, row, col, sumSurroundings);
+                            sumSurroundings = cellOperations.SumSurroundings(grid, row, col);
+                            cellOperations.GreenChangeColor(newGrid, row, col, sumSurroundings);
                         }
                     }
                 }
@@ -63,68 +64,6 @@ namespace GreenRedGame
                 grid = newGrid;
             }
             return wantedCellGreenCount;
-        }
-
-        private void GreenChangeColor(int[,] grid, int row, int col, int sumSurroundings)
-        {
-            if (sumSurroundings != 2 && sumSurroundings != 3 && sumSurroundings != 6)
-            {
-                grid[row, col] = 0;
-            }
-        }
-
-        private void RedChangeColor(int[,] grid, int row, int col, int sum)
-        {
-            if (sum == 3 || sum == 6)
-            {
-                grid[row, col] = 1;
-            }
-        }
-
-        private static int GetCell(int[,] grid,int row,int col)
-        {
-
-            int value = -1;
-            try
-            {
-                value = grid[row, col];
-            }
-            catch (Exception)
-            {
-                return value;
-            }
-
-            return value;
-        }
-
-        private static int SumSurroundings(int[,] grid, int row, int col)
-        {
-            var cells = new int[8];
-            var sumResult = 0;
-            //cellUp
-            cells[0] = GetCell(grid, row - 1, col);
-            //cellUpRight
-            cells[1] = GetCell(grid, row - 1, col + 1);
-            //cellRight
-            cells[2] = GetCell(grid, row, col + 1);
-            //cellDownRight
-            cells[3] = GetCell(grid, row + 1, col + 1);
-            //cellDown 
-            cells[4] = GetCell(grid, row + 1, col);
-            //cellDownLeft 
-            cells[5] = GetCell(grid, row + 1, col - 1);
-            //cellLeft 
-            cells[6] = GetCell(grid, row, col - 1);
-            //cellUpLeft
-            cells[7] = GetCell(grid, row - 1, col - 1);
-            for (int i = 0; i < cells.Length; i++)
-            {
-                if (cells[i] > 0)
-                {
-                    sumResult += cells[i];
-                }
-            }
-            return sumResult;
-        }
+        }    
     }
 }

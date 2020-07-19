@@ -36,5 +36,46 @@ namespace GreenRedGame.Tests
             };
             Assert.AreEqual(14, gridOperations.IterateGrid(grid, 15, 2, 2));
         }
+
+        [TestCase]
+        public void ThirdInputShouldWork()
+        {
+
+            int[,] grid =
+            {
+                {0,0,0 },
+                {1,1,1},
+                {0,0,0},
+                {1,1,1},
+            };
+            Assert.AreEqual(5, gridOperations.IterateGrid(grid, 5, 1, 0));
+        }
+        [TestCase]
+        public void FourthInputShouldWork()
+        {
+
+            int[,] grid =
+            {
+                {0,0,0},
+                {0,0,0},
+                {0,0,0},
+                {0,0,0},
+            };
+            Assert.AreEqual(0, gridOperations.IterateGrid(grid, 5, 1, 0));
+        }
+
+        [TestCase]
+        public void FifthInputShouldWork()
+        {
+
+            int[,] grid =
+            {
+                {1,1,1},
+                {1,1,1},
+                {1,1,1},
+                {1,1,1},
+            };
+            Assert.AreEqual(5, gridOperations.IterateGrid(grid, 5, 1, 0));
+        }
     }
 }

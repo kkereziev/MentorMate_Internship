@@ -2,34 +2,42 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Text;
+using System.Threading.Tasks.Dataflow;
 
 namespace GreenRedGame
 {
     public class Grid
     {
-        private object[,] list;
+        private Cell[,] cells;
         private int count;
         public Grid(int row, int col)
         {
-            this.list = new object[row, col];
+            this.cells = new Cell[row, col];
             this.count = row * col;
-            this.Row = row;
-            this.Column = col;
+            this.Rows = row;
+            this.Columns = col;
         }
-
-        public int Row { get; set; }
-        public int Column { get; set; }
-        public object this[int row,int col]
+        public Grid(Grid grid)
+        {
+            this.cells = grid.cells.Clone() as Cell[,];
+            this.count = grid.count;
+            this.Rows = grid.Rows;
+            this.Columns = grid.Columns;
+        }
+        //public Cell[,] Cells { get; set; }
+        public int Rows { get; set; }
+        public int Columns { get; set; }
+        public Cell this[int row,int col]
         {
             get 
             {
                 ValidateIndex(row, col);
-                return this.list[row,col]; 
+                return this.cells[row,col]; 
             }
             set 
             {
                 ValidateIndex(row, col);
-                this.list[row,col] = value; 
+                this.cells[row,col] = value; 
             }
         }
 
@@ -39,6 +47,11 @@ namespace GreenRedGame
             {
                 throw new IndexOutOfRangeException("Out of range!");
             }
+        }
+
+        public Grid Clone()
+        {
+            return new Grid(this);
         }
     }
 }

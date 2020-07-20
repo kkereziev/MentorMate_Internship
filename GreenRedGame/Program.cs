@@ -7,10 +7,10 @@ namespace GreenRedGame
     {
         public static void Run()
         {
-            var operations = new GridOperations();
+            
             //this is the entry point of our program
             //first we populate the grid
-            var grid = operations.FillGrid();
+            var grid = GridOperations.FillGrid();
 
             //we take the rest of the user input
             var input = CoordinatesAndNumberOfIterations();
@@ -19,7 +19,7 @@ namespace GreenRedGame
             var colWanted = input[0];
             var iterations = input[2];
 
-            Console.WriteLine(operations.IterateGrid(grid,iterations,rowWanted,colWanted));
+            Console.WriteLine(GridOperations.IterateGrid(grid,iterations,rowWanted,colWanted));
         }
 
         private static int[] CoordinatesAndNumberOfIterations()

@@ -1,28 +1,29 @@
 ﻿using System;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 
 namespace GreenRedGame
 {
-    public class GridOperations : IGridOperations
+    public static class GridOperations 
     {
-        CellOperations cellOperations = new CellOperations();
-        public int[,] FillGrid()
+        
+        public static Grid FillGrid()
         {
             var grid = SizeOfGrid();
 
-            for (int row = 0; row < grid.GetLength(0); row++)
+            for (int row = 0; row < grid.Rows; row++)
             {
                 var input = Console.ReadLine()
                     .ToCharArray();
-                for (int col = 0; col < grid.GetLength(1); col++)
+                for (int col = 0; col < grid.Columns; col++)
                 {
-                    grid[row, col] = input[col] - '0';
+                    grid[row, col] = new Cell(input[col] - '0');
                 }
             }
             return grid;
         }
 
-        private int[,] SizeOfGrid()
+        private static Grid SizeOfGrid()
         {
             var gridSize = Console.ReadLine()
                .Split(new char[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries)
@@ -30,37 +31,40 @@ namespace GreenRedGame
                .ToArray();
             int width = gridSize[0];
             int height = gridSize[1];
-            var grid = new int[height, width];
+            
+            var grid = new Grid(height,width);
             return grid;
         }
 
-        public int IterateGrid(int[,] grid, int iterations, int rowWanted, int colWanted)
+        public static int IterateGrid(Grid grid, int iterations, int rowWanted, int colWanted)
         {
             int wantedCellGreenCount = 0;
             var sumSurroundings = 0;
             while (iterations-- >= 0)
             {
-                var newGrid = grid.Clone() as int[,];
-                for (int row = 0; row < grid.GetLength(0); row++)
+                var newGrid = grid.Clone(); 
+                    
+                for (int row = 0; row < grid.Rows; row++)
                 {
-                    for (int col = 0; col < grid.GetLength(1); col++)
+                    for (int col = 0; col < grid.Columns; col++)
                     {
-                        if (grid[row, col] == 0)
+                        if (grid[row, col].Value == 0)
                         {
-                            sumSurroundings = cellOperations.SumSurroundings(grid, row, col);
-                            cellOperations.RedChangeColor(newGrid, row, col, sumSurroundings);
+                            sumSurroundings = CellOperations.SumSurroundings(grid, row, col);
+                            CellOperations.RedChangeColor(newGrid, row, col, sumSurroundings);
                         }
-                        else if (grid[row, col] == 1)
+                        else if (grid[row, col].Value == 1)
                         {
-                            sumSurroundings = cellOperations.SumSurroundings(grid, row, col);
-                            cellOperations.GreenChangeColor(newGrid, row, col, sumSurroundings);
+                            sumSurroundings = CellOperations.SumSurroundings(grid, row, col);
+                            CellOperations.GreenChangeColor(newGrid, row, col, sumSurroundings);
                         }
                     }
                 }
-                if (grid[rowWanted, colWanted] == 1)
+                if (grid[rowWanted, colWanted].Value == 1)
                 {
                     wantedCellGreenCount++;
                 }
+
                 grid = newGrid;
             }
             return wantedCellGreenCount;

@@ -13,14 +13,14 @@ namespace GreenRedGame.Tests
         public void TestRowPropertyOfClass()
         {
             var grid = new Grid(1, 1);
-            Assert.AreEqual(1, grid.Row);
+            Assert.AreEqual(1, grid.Rows);
         }
 
         [TestCase]
         public void TestColumnPropertyOfClass()
         {
             var grid = new Grid(1, 1);
-            Assert.AreEqual(1, grid.Column);
+            Assert.AreEqual(1, grid.Columns);
         }
 
         [TestCase]

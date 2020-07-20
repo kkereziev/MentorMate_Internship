@@ -11,6 +11,7 @@ namespace GreenRedGame
         {
             var grid = SizeOfGrid();
 
+            //filling the grid
             for (int row = 0; row < grid.Rows; row++)
             {
                 var input = Console.ReadLine()
@@ -25,6 +26,7 @@ namespace GreenRedGame
 
         private static Grid SizeOfGrid()
         {
+            //here comes the input for the size of the 2d grid
             var gridSize = Console.ReadLine()
                .Split(new char[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries)
                .Select(int.Parse)
@@ -40,26 +42,35 @@ namespace GreenRedGame
         {
             int wantedCellGreenCount = 0;
             var sumSurroundings = 0;
+            //iterating
             while (iterations-- >= 0)
             {
+                /*
+                 * cloning the original 2d grid, since we must change all cells after
+                 * each iteration we must clone each time the current grid and work on the
+                 * newly created one because we will get the results wrong
+                 */
+
                 var newGrid = grid.Clone(); 
                     
                 for (int row = 0; row < grid.Rows; row++)
                 {
                     for (int col = 0; col < grid.Columns; col++)
                     {
+                        //summing the surrounding cells
+                        sumSurroundings = CellOperations.SumSurroundings(grid, row, col);
                         if (grid[row, col].Value == 0)
                         {
-                            sumSurroundings = CellOperations.SumSurroundings(grid, row, col);
+                            //chaning the color
                             CellOperations.RedChangeColor(newGrid, row, col, sumSurroundings);
                         }
                         else if (grid[row, col].Value == 1)
                         {
-                            sumSurroundings = CellOperations.SumSurroundings(grid, row, col);
                             CellOperations.GreenChangeColor(newGrid, row, col, sumSurroundings);
                         }
                     }
                 }
+                //increasing the value of the variable if the wanted cell is 1
                 if (grid[rowWanted, colWanted].Value == 1)
                 {
                     wantedCellGreenCount++;

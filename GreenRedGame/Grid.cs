@@ -8,8 +8,11 @@ namespace GreenRedGame
 {
     public class Grid
     {
-        private Cell[,] cells;
+        //class representing our 2d grid
+
+        private Cell[,] cells; 
         private int count;
+        
         public Grid(int row, int col)
         {
             this.cells = new Cell[row, col];
@@ -17,6 +20,7 @@ namespace GreenRedGame
             this.Rows = row;
             this.Columns = col;
         }
+
         public Grid(Grid grid)
         {
             this.cells = grid.cells.Clone() as Cell[,];
@@ -24,9 +28,10 @@ namespace GreenRedGame
             this.Rows = grid.Rows;
             this.Columns = grid.Columns;
         }
-        //public Cell[,] Cells { get; set; }
+
         public int Rows { get; set; }
         public int Columns { get; set; }
+        //property for indexing
         public Cell this[int row,int col]
         {
             get 
@@ -40,7 +45,7 @@ namespace GreenRedGame
                 this.cells[row,col] = value; 
             }
         }
-
+        //validation
         private void ValidateIndex(int row,int col)
         {
             if (row < 0 || col < 0 ||  row*col >= this.count)
@@ -48,7 +53,7 @@ namespace GreenRedGame
                 throw new IndexOutOfRangeException("Out of range!");
             }
         }
-
+        //cloning objects
         public Grid Clone()
         {
             return new Grid(this);

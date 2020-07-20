@@ -9,7 +9,7 @@ namespace GreenRedGame
         {
             var operations = new GridOperations();
             //this is the entry point of our program
-            //frist we populate the grid
+            //first we populate the grid
             var grid = operations.FillGrid();
 
             //we take the rest of the user input

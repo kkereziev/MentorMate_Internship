@@ -15,7 +15,7 @@ namespace GreenRedGame
                     stuff[row, col] = col;
                 }
             }
-            
+            Console.WriteLine(stuff[10,10]);
         }
     }
 }

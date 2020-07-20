@@ -27,7 +27,32 @@ namespace GreenRedGame.Tests
         public void TestIndexingOfClass()
         {
             var grid = new Grid(1, 1);
-            
+            Exception coughtException = null;
+            try
+            {
+                var value=grid[4, 4];
+            }
+            catch (Exception ex)
+            {
+                coughtException = ex;
+            }
+            Assert.AreEqual(coughtException.Message, "Out of range!");
+        }
+
+        [TestCase]
+        public void TestIndexingOfClassWithNegativeNumber()
+        {
+            var grid = new Grid(1, 1);
+            Exception coughtException = null;
+            try
+            {
+                var value = grid[-1, 4];
+            }
+            catch (Exception ex)
+            {
+                coughtException = ex;
+            }
+            Assert.AreEqual(coughtException.Message, "Out of range!");
         }
     }
 }

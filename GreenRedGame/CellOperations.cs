@@ -14,7 +14,7 @@ namespace GreenRedGame
             {
                 value =  grid[row, col].Value;
             }
-            catch (Exception)
+            catch (IndexOutOfRangeException)
             {
                 return value;
             }

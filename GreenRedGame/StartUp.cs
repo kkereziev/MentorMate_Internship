@@ -6,7 +6,7 @@ namespace GreenRedGame
     {
         static void Main(string[] args)
         {
-            //
+            //the documentation is in the readmy of the repository
             Program.Run();
         }
     }

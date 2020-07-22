@@ -18,5 +18,9 @@ namespace GreenRedGame
             this.Value = value;
         }
         public int Value { get; set; }
+       /*
+        * I decided to not include properties for the coordinates because I believe
+        * they will have no real use for the program and will be redundant
+         */
     }
 }

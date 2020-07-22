@@ -2,8 +2,8 @@ This is a basic readme to guide the evaluator through my thought process during 
 
 So the we're going to use OOP we have to define the objects first-the main objects are the grid and each cell in the grid.
 I've created class Grid and added properties for number of rows(weight), number of columns(height), indexing our custom cell 2d array,costructor, 
-validation function for the indexing property and clone function, I'll give mnore specifics later.
-I've also created struct Cell(I'll explain why not class later) with a single property-Value.
+validation function for the indexing property and clone function.
+I've also created struct Cell with a single property-Value.
 
 The grid is filled in the FillGrid method in class GridOperations, it is very important to note that through the whole processing the 2d arrray manipulate
 not as grid but as normal array. We take the wanted cell by reversing the place of the indexing ex. in the first test we want cell with coordinates 1,0 
